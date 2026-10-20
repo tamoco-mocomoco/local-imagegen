@@ -1,0 +1,26 @@
+# 使い方 (公開イメージ ghcr.io/tamoco-mocomoco/local-imagegen を取得して起動。取得できなければローカルでビルド)
+#   CPU (どこでも):            docker compose up -d
+#   NVIDIA GPU (Linux/WSL2):   docker compose -f compose.yml -f compose.gpu.yml up -d
+#   自分でビルドしたい場合:     上のコマンドに --build を付ける
+#   Mac では Docker から GPU が使えないため ./run.sh (= python3 run.py、ネイティブ) を推奨
+services:
+  imagegen:
+    build:
+      context: .
+      args:
+        TORCH_INDEX_URL: ${TORCH_INDEX_URL:-}
+    image: ghcr.io/tamoco-mocomoco/local-imagegen:${IMAGE_TAG:-latest}
+    ports:
+      - "${PORT:-8000}:8000"
+    environment:
+      PRESET: ${PRESET:-sdxl-turbo}
+      MODEL_ID: ${MODEL_ID:-}
+      HF_TOKEN: ${HF_TOKEN:-}
+      CPU_OFFLOAD: ${CPU_OFFLOAD:-0}
+      PRELOAD: ${PRELOAD:-1}
+      ALLOWED_PRESETS: ${ALLOWED_PRESETS:-}
+      MAX_LOADED_MODELS: ${MAX_LOADED_MODELS:-}
+    volumes:
+      - ./models:/models      # Hugging Face キャッシュ (ネイティブ起動と共有)
+      - ./outputs:/outputs    # 生成画像
+    restart: unless-stopped

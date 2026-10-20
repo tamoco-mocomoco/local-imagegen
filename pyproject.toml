@@ -1,0 +1,27 @@
+[project]
+name = "local-imagegen"
+version = "0.1.0"
+description = "Local text-to-image server (diffusers) that runs in Docker (CUDA/CPU) or natively on Mac (MPS)"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "torch>=2.4",
+    "diffusers>=0.32",
+    "transformers>=4.45",
+    "accelerate>=1.0",
+    "safetensors>=0.4",
+    "sentencepiece>=0.2",
+    "protobuf>=4.25",
+    "pillow>=10",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "huggingface_hub>=0.25",
+]
+
+[project.optional-dependencies]
+# 背景除去 (透過 PNG)。uv sync --extra rembg
+rembg = ["rembg>=2.0", "onnxruntime>=1.17"]
+# Claude Code / Claude Desktop から直接呼ぶ MCP サーバー。uv sync --extra mcp
+mcp = ["mcp>=1.2"]
+
+[tool.uv]
+package = false

@@ -1,0 +1,11 @@
+# NVIDIA GPU 用オーバーライド。要 NVIDIA Container Toolkit。
+#   docker compose -f compose.yml -f compose.gpu.yml up -d --build
+services:
+  imagegen:
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
