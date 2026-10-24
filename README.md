@@ -358,6 +358,15 @@ curl -s localhost:8000/health
 | `OUTPUT_DIR` | `./outputs` (Docker は `/outputs`) | 出力先 |
 | `FAKE_DEVICE` / `FAKE_MEMORY_GB` | - | 検証用。環境判定 (tier) を偽装する。doctor.py は `FAKE_OS` / `FAKE_GPU` / `FAKE_WSL` も見る |
 
+## 関連リポジトリ
+
+同じ作りのローカル生成サービスと、それらをつないで動画を作るツール。
+
+| リポジトリ | 内容 |
+|---|---|
+| [local-musicgen](https://github.com/tamoco-mocomoco/local-musicgen) | BGM・歌入りの曲の生成 (ACE-Step 1.5)。HTTP API・CLI・MCP サーバー |
+| [local-vidstudio](https://github.com/tamoco-mocomoco/local-vidstudio) | 画像・音楽・音声 (VOICEVOX) の生成サービスをつなぎ、作品 JSON から短い動画 (MP4) を作るオーサリングツール。サービスの起動・停止も受け持つ |
+
 ## ライセンスと免責
 
 このリポジトリのコード (サーバー・CLI・MCP サーバー・Docker 設定) は [MIT License](LICENSE) です。
