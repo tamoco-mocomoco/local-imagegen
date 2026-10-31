@@ -360,12 +360,11 @@ curl -s localhost:8000/health
 
 ## 関連リポジトリ
 
-同じ作りのローカル生成サービスと、それらをつないで動画を作るツール。
+同じ作りのローカル生成サービス。
 
 | リポジトリ | 内容 |
 |---|---|
 | [local-musicgen](https://github.com/tamoco-mocomoco/local-musicgen) | BGM・歌入りの曲の生成 (ACE-Step 1.5)。HTTP API・CLI・MCP サーバー |
-| [local-vidstudio](https://github.com/tamoco-mocomoco/local-vidstudio) | 画像・音楽・音声 (VOICEVOX) の生成サービスをつなぎ、作品 JSON から短い動画 (MP4) を作るオーサリングツール。サービスの起動・停止も受け持つ |
 
 ## ライセンスと免責
 
